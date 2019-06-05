@@ -20,10 +20,12 @@ def producePermuations(n):
 def findOverlap(base, addition):
     overlap = addition
     permLen = len(addition)
-    baseTail = base[:(-1*permLen)]
+    baseTail = base[-permLen:]
     while overlap != baseTail:
         overlap = overlap[:-1]
         baseTail = baseTail[1:]
+        print("hi: " + baseTail)
+        print(overlap)
     return addition[len(overlap):]
 
 def difference(base, addition):
@@ -38,7 +40,8 @@ def findSuper():
         overlaps = list(map(lambda x: difference(baseString, x), perms))
         mostOverlapIndex = overlaps.index(min(overlaps))
         baseString = baseString + findOverlap(baseString, perms[mostOverlapIndex])
-        perms.pop(mostOverlapIndex)
+        perms = list(filter(lambda x: x not in baseString, perms))
+
     print(verifySuper(baseString, n))
     print(len(baseString))
     return baseString
