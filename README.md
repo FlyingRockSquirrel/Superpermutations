@@ -1,2 +1,2 @@
 # Superpermutations
-Finds superpermutations of n characters in NP time
+Finds superpermutations of n characters using a greedy algorithm. 
